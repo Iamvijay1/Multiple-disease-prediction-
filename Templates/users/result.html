@@ -1,0 +1,20 @@
+{% extends 'users/userbase.html' %}
+
+{% block content %}
+<style>
+    .div{
+        background:135deg, rgba(246,197,218,1) 0%, rgba(170,198,230,0.7310573887758228) 100% ;
+    }
+</style>
+
+<div>
+    <center>
+        <h1 style="color: white;">The disease you are suffering from might be:</h1>
+        <h1 style="color:red">{{predicted_disease}}</h1>
+        <h1 style="color: white;">
+        if problem persists for long duration please visit Doctor
+        </h1>
+    </center>
+  
+</div>
+{% endblock %}

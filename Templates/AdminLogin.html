@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Login{% endblock %}
+{% block user_login %}active{% endblock %}
+
+{% block content %}
+<style>
+    .shadowWrapper {
+        font-family: "Book Antiqua";
+        background:white;
+        margin-top: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        background: white;
+        border-radius: 20px;
+        
+
+    }
+
+    .centered-form {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Make the form take up the full viewport height */
+        border-radius: 15px;
+
+    }
+
+    .login-form {
+        max-width: 600px; /* Control the maximum width of the form */
+        width: 100%; /* Make the form as wide as its container */
+        padding: 20px; /* Add some padding for spacing inside the form */
+        background: linear-gradient(135deg, rgba(246,197,218,1) 0%, rgba(170,198,230,0.7310573887758228) 100%);
+        background-size: cover;
+    }
+    .login-form:hover{
+        background-color:rgb(0, 110, 255); ;
+        color: rgb(0, 0, 0);
+        font: rgb(0, 0, 0);
+        text-decoration-color: white;
+            
+        transition: .5s;
+        border-radius: 15px;
+        border-color: #e9f4fb;
+    }    
+    input[type=text] {
+        padding: 1rem;
+        width: 21rem;
+    }
+
+    input[type=password] {
+        padding: 1rem;
+        width: 21rem;
+    }
+
+    
+</style>
+<div class="slider slider-revolution revolution-slider  fullwidth">
+    <div class="centered-form">
+            <div class="shadowWrapper">
+                <div class="login-form">
+                        
+                <h2 class="text-center p-2">Admin Login</h1> <br>
+                <form action="{% url 'AdminLoginCheck' %}" method="POST" class="text-primary" >
+                    {% csrf_token %}
+
+                    <center>
+                        <div class="form-group row">
+                            <div class="">
+                                <input type="text" class="form-control" name="loginid" required
+                                    placeholder="Enter Login Id">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <div class="">
+                                <input type="password" class="form-control" name="pswd" required
+                                    placeholder="Enter password">
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+
+                            <br>
+                            <center>
+                                <input type="submit" class = "btn btn-dark p-2"> &nbsp;
+                                <input type="reset" class = "btn btn-dark p-2">
+                            </center>
+                        </div>
+                    </div>
+
+
+                    <!-- Message -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p align="center" class="text-primary"> {{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</div>
+{% endblock %}

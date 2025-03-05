@@ -1,0 +1,136 @@
+{% extends 'users/userbase.html' %}
+
+{% load static %} {# Load the static tag library here #}
+
+{% block title %}
+User Home
+{% endblock %}
+
+{% block user_home %}
+active
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url("{% static 'assets/img/OIP.jpg' %}");
+        background-size: cover;
+    }
+
+    .card {
+    margin: 0 2rem 0 2rem;
+    position: relative;
+    width: 350px;
+    height: 180px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    transition: .3s;
+    background-color: linear-gradient(135deg, rgba(246,197,218,1) 0%, rgba(170,198,230,0.7310573887758228) 100%);;
+    
+    cursor: pointer;
+    
+    
+    }
+
+    .card:hover {
+    height: 560px;
+    transition: .3s;
+    width: 450px;
+    background: linear-gradient(135deg, rgba(246,197,218,1) 0%, rgba(170,198,230,0.7310573887758228) 100%);
+    }
+
+    .card:hover .content {
+    transform: translateY(-100px);
+    opacity: 1;
+    text-wrap: center;
+    }
+    .card:hover .imgbox {
+        position: top;
+    }
+
+    .imgbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    
+    }
+
+    img {
+    width: 100%;
+
+    border-radius: 10px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-80px);
+    }
+
+    .content {
+    transition: .3s;
+    transform: translateY(-350px);
+    text-align: center;
+    opacity: 0;
+    padding: auto;
+    }
+
+    .content h2 {
+    margin-bottom: 0.3rem;
+    color: #0a0a0a;
+    position:top;
+    padding-top: 55px;
+    
+    }   
+
+    .main-div {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+
+</style>
+<div>
+    <h1  class="text-center" style="color: white;">User Home</h1>
+</div>
+<div class="main-div">
+    <div class="card">
+        <div class="imgbox">
+            <img src="/static/assets/img/doctor.jpg" alt="Our Mission">
+        </div>
+        <div class="content">  
+            <h2>Our Mission</h2>
+            <p>At the forefront of healthcare innovation, our mission is to harness the power of advanced machine learning and data analytics to predict multiple diseases with high accuracy.</p>
+                <p>By developing robust predictive models, we aim to enable early detection of diseases
+                Our goal is to revolutionize healthcare by providing tools that empower individuals and healthcare professionals to make informed decisions, ultimately improving patient outcomes and quality of life.</p>
+              
+        </div>
+    </div>
+    <div class="card">
+        <div class="imgbox">
+            <img src="/static/assets/img/why us.jpeg" alt="">
+        </div>
+        <div class="content">
+            <h2>Why Us ?</h2>
+            <p> advanced healthcare decision support platform leveraging machine learning algorithms.</p>
+            <p> system integrates various supervised classification algorithms to predict diseases based on user-input symptoms.
+            also considers the likelihood of the individual suffering from a specific illness.</p>
+            <p> This comprehensive system aims to facilitate early disease detection, improve healthcare decision-making.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="imgbox">
+            <img src="/static/assets/img/abtus.png.jpg" alt="">
+        </div>
+        <div class="content">
+            <h2>About Us</h2>
+            
+                 <p> Based on the symptoms, the model uses the results of the supervised classification algorithms and gives a final validation indicating the disease that the existent might be suffering.</p>
+                 <p>  On combining the prognostications from all the below classification algorithms, the model returns a more accurate verification when compared to the prognostications made by individual models. </p>
+                 
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'users/userbase.html' %}
+
+{% block content %}
+<script>
+    function adjustSymptomFields() {
+            const symptomContainer = document.getElementById('symptom-container');
+            const symptomCount = parseInt(document.getElementById('symptom-count').value);
+            const currentFields = symptomContainer.getElementsByClassName('symptom-field').length;
+
+            // Add fields if symptomCount is greater than currentFields
+            for (let i = currentFields + 1; i <= symptomCount; i++) {
+                const newField = document.createElement('div');
+                newField.className = 'mb-3 symptom-field';
+                newField.innerHTML = `
+                    <label for="Symptom_${i}" class="form-label">Symptom_${i}:</label>
+                    <input type="text" id="Symptom_${i}" name="Symptom_${i}" class="form-control" required>
+                `;
+                symptomContainer.appendChild(newField);
+            }
+
+            // Remove fields if symptomCount is less than currentFields
+            for (let i = currentFields; i > symptomCount; i--) {
+                const fieldToRemove = document.getElementById(`Symptom_${i}`).parentNode;
+                symptomContainer.removeChild(fieldToRemove);
+            }
+        }
+
+    function initializeForm() {
+            const symptomContainer = document.getElementById('symptom-container');
+            for (let i = 5; i <= 10; i++) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.id = `Symptom_${i}`;
+                hiddenField.name = `Symptom_${i}`;
+                hiddenField.value = '0';
+                symptomContainer.appendChild(hiddenField);
+            }
+        }
+
+        window.onload = initializeForm;
+</script>
+
+<section id="predict-hair-loss" class="d-flex justify-content-center align-items-center">
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center">Predict Disease</h1>
+                        <form method="post">
+                            {% csrf_token %}
+                        <id id="symptom-container">
+                            <div class="mb-3 symptom-field">
+                                <label for="Symptom_1" class="form-label">Symptom_1:</label>
+                                <input type="text" id="Symptom_1" name="Symptom_1" class="form-control" required>
+                            </div>
+                            <div class="mb-3 symptom-field">
+                                <label for="Symptom_2" class="form-label">Symptom_2:</label>
+                                <input type="text" id="Symptom_2" name="Symptom_2" class="form-control" required>
+                            </div>
+                            <div class="mb-3 symptom-field">
+                                <label for="Symptom_3" class="form-label">Symptom_3:</label>
+                                <input type="text" id="Symptom_3" name="Symptom_3" class="form-control" required>
+                            </div>
+                            <div class="mb-3 symptom-field">
+                                <label for="Symptom_4" class="form-label">Symptom_4:</label>
+                                <input type="text" id="Symptom_4" name="Symptom_4" class="form-control" required>
+                            </div>
+                        </id>    
+                           
+                        <div class="mb-3">
+                            <label for="symptom-count" class="form-label">Number of Symptoms:</label>
+                            <input type="number" id="symptom-count" name="symptom-count" class="form-control" min="4" max="10" value="4" onchange="adjustSymptomFields()">
+                        </div>
+                            
+                            <button type="submit" class="btn btn-primary">Predict Disease</button>
+                          
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

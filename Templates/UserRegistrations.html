@@ -1,0 +1,132 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+<style>
+    .shadowWrapper {
+        font-family: "Book Antiqua";
+        background:white;
+        margin-top: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        background: white;
+        border-radius: 20px;
+        
+
+    }
+
+    .centered-form {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Make the form take up the full viewport height */
+        border-radius: 15px;
+        
+    }
+
+    .registration-form {
+        max-width: 600px; /* Control the maximum width of the form */
+        width: 100%; /* Make the form as wide as its container */
+        padding: 20px; /* Add some padding for spacing inside the form */
+        background: linear-gradient(135deg, rgba(246,197,218,1) 0%, rgba(170,198,230,0.7310573887758228) 100%);
+        background-size: cover;
+    }
+    .registration-form:hover{
+        background-color:rgb(0, 110, 255); ;
+        color: rgb(0, 0, 0);
+        font: rgb(0, 0, 0);
+        text-decoration-color: white;
+            
+        transition: .5s;
+        border-radius: 15px;
+        border-color: #e9f4fb;
+    }    
+</style>
+
+    
+
+    
+
+
+<br><br>
+<div class="slider slider-revolution revolution-slider  fullwidth">
+    <div class="centered-form">
+            <div class="shadowWrapper">
+                <div class="registration-form">
+                        <center>
+                                <h2 class="text-center p-2"><u>User Register Form</u></h2>
+							<form action="{%url 'UserRegisterActions'%}" method="POST"  style="width:100%">
+
+                    {% csrf_token %}
+                    <table>
+                        <tr><td></td>
+                            <td>User Name</td>
+                            <td>{{form.name}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>Login ID</td>
+                            <td>{{form.loginid}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>Password</td>
+                            <td>{{form.password}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>Mobile</td>
+                            <td>{{form.mobile}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>email</td>
+                            <td>{{form.email}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>Locality</td>
+                            <td>{{form.locality}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>Address</td>
+                            <td>{{form.address}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>City</td>
+                            <td>{{form.city}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td>State</td>
+                            <td>{{form.state}}</td>
+                        </tr>
+                        <tr><td></td>
+                            <td></td>
+                            <td>{{form.status}}</td>
+                        </tr>
+ <tr><td></td>
+                            <td></td>
+     <td><button type="submit" value="Register" class="sendmail alignright">Register</button></td>
+                        </tr>
+
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        <font color='GREEN'> {{ message }}</font>
+                        {% endfor %}
+                        {% endif %}
+
+                    </table>
+
+                </form>
+</center>
+
+            </div>
+            </div></div></div>
+{%endblock%}
+
+
+
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta http-equive="X-UA-Compatible" content
+
+</head> -->

@@ -1,0 +1,101 @@
+{% extends 'users/userbase.html' %}
+{% block content %}
+
+<head>
+    <style>
+        body {
+            background-color: rgb(103, 244, 244); /* Set your desired background color */
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .table-container {
+            padding-left: 120px;
+            padding-top: 45px;
+            padding-bottom: 40px;
+            
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto; /* Center the container horizontally */
+            max-width: 80%; /* Define the maximum width (adjust as needed) */
+            background-color: white;
+            background-position: absolute;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            width: 25%;
+            margin: 10px;
+            
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            text-align: center; /* Center the text in table headers */
+        }
+
+        .table-name {
+            text-align: center; /* Center the text in table names */
+            font-weight: bold; /* Optional: Make the name bold */
+            color: blueviolet;
+        }
+        .div{
+            position: center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1 style="color: white;">Model Results</h1>
+    <div class="table-container">
+    {% for result in results_list %}
+    <table>
+        <div class="bg">
+            <thead>
+                <tr>
+                    <th colspan="2" class="table-name">{{ result.model_name }}</th>
+                </tr>
+            </thead>
+            <tr>
+                <th style="color: brown">Metric</th>
+            <th style="color: brown">Value</th>
+            </tr>
+            <tr>
+                <td>Accuracy</td>
+                <td style="color: red">{{ result.accuracy|floatformat:3 }}</td>
+            </tr>
+            <tr>
+                <td>Precision</td>
+                <td style="color: red">{{ result.precision|floatformat:3 }}</td>
+            </tr>
+            <tr>
+                <td>Recall</td>
+                <td style="color: red">{{ result.recall|floatformat:3 }}</td>
+            </tr>
+            <tr>
+                <td>F1 Score</td>
+                <td style="color: red">{{ result.f1_score|floatformat:3 }}</td>
+            </tr>
+            
+        </div>
+        
+    </table>
+   
+    {% endfor %}
+    <div>
+        <h1>confusion matrix png</h1>
+        <img src="static\confusion_matrix.png">
+    </div>
+    </div>
+   
+    </center>
+</body>
+
+{% endblock %}
